@@ -1,3 +1,12 @@
-<div class="square"
-     id=@(symbol->string id)
-     style=@(string-append "background-color:" (symbol->string (get-color GAME id)))></div>
+<a href=@(embed/url ((curry click-square-handler) id))>
+    <div class="square"
+         id=@(symbol->string id)
+         style=@(string-append "background-color:" (symbol->string (get-color GAME id)))>
+    </div>
+</a>
+
+<!--
+I can either make a board template...with the squares embedded in it
+Or I can just generate them with x-expressions...
+-->
+

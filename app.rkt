@@ -17,10 +17,9 @@
                       (type "text/css"))))
          (body
            (h1 "Checkers in Racket!")
-           ,(make-square 'a1)
            ,(render-board embed/url)))))
   (send/suspend/dispatch response-generator))
-(define (make-square id)
+(define (make-square embed/url id)
   (make-cdata #f #f (include-template "square.html")))
 (define (render-board embed/url)
   `(div ((class "board"))
