@@ -27,14 +27,14 @@
                    ,(string-append 
                       "background-color:" 
                       (symbol->string (get-color 
-                                        (game-board GAME) 'a1)))))))
+                                        GAME 'a1)))))))
         (a ((href ,(embed/url ((curry click-square-handler) 'a2))))
            (div ((class "square")
                  (id "a2")
                  (style 
                    ,(string-append 
                       "background-color:" 
-                      (symbol->string (get-color (game-board GAME ) 'a2)))))))))
+                      (symbol->string (get-color GAME  'a2)))))))))
 
 (define (click-square-handler square request)
   (define (response-generator embed/url)
