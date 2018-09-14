@@ -1,0 +1,13 @@
+.board {
+    display: grid;
+    grid-template-columns: auto;
+}
+
+.square {
+    height: 40px;
+    width: 40px;
+}
+
+/* #a1 { */
+/*     /1* background-color: black; *1/ */
+/* } */
