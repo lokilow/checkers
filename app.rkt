@@ -1,6 +1,8 @@
 #lang web-server/insta
 
-(require "model.rkt")
+(require web-server/templates
+         xml
+         "model.rkt")
 
 (define (start request)
   (render-game request))
@@ -15,9 +17,11 @@
                       (type "text/css"))))
          (body
            (h1 "Checkers in Racket!")
+           ,(make-square 'a1)
            ,(render-board embed/url)))))
   (send/suspend/dispatch response-generator))
-
+(define (make-square id)
+  (make-cdata #f #f (include-template "square.html")))
 (define (render-board embed/url)
   `(div ((class "board"))
         (a ((href ,(embed/url ((curry click-square-handler) 'a1 ))))
