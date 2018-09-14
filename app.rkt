@@ -1,10 +1,12 @@
-#lang web-server/insta
+#lang racket
 
-(require web-server/templates
+(require web-server/servlet
+         web-server/servlet-env
+         web-server/templates
          xml
          "model.rkt")
 
-(define (start request)
+(define (start-game request)
   (render-game request))
 
 (define (render-game request)
@@ -45,5 +47,10 @@
     (render-game request))
   (send/suspend/dispatch response-generator))
 
-(static-files-path (current-directory))
+
+(serve/servlet start-game
+               #:servlet-path "/checkers"
+               #:extra-files-paths
+               (list 
+                 (build-path (current-directory) "static")))
 
