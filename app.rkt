@@ -20,17 +20,25 @@
 
 (define (render-board embed/url)
   `(div ((class "board"))
-        (a ((href ,(embed/url click-square-handler)))
+        (a ((href ,(embed/url ((curry click-square-handler) 'a1 ))))
            (div ((class "square")
                  (id "a1")
                  (style 
                    ,(string-append 
                       "background-color:" 
-                      (symbol->string (board-color (game-board GAME))))))))))
+                      (symbol->string (get-color 
+                                        (game-board GAME) 'a1)))))))
+        (a ((href ,(embed/url ((curry click-square-handler) 'a2))))
+           (div ((class "square")
+                 (id "a2")
+                 (style 
+                   ,(string-append 
+                      "background-color:" 
+                      (symbol->string (get-color (game-board GAME ) 'a2)))))))))
 
-(define (click-square-handler request)
+(define (click-square-handler square request)
   (define (response-generator embed/url)
-    (click-square! GAME )
+    (click-square! GAME square)
     (render-game request))
   (send/suspend/dispatch response-generator))
 
