@@ -1,13 +1,44 @@
+h1 {
+    margin:auto;
+    text-align: center;
+}
 .board {
     display: grid;
-    grid-template-columns: auto;
+    height:600px;
+    width:600px;
+    grid-template-columns: auto auto auto;
+    margin: auto;
 }
 
 .square {
-    height: 40px;
-    width: 40px;
+    box-sizing:border-box;
+    border: 1px groove black;
+    height: 200px;
+    width: 200px;
+    background-color: grey;
 }
 
-/* #a1 { */
-/*     /1* background-color: black; *1/ */
-/* } */
+a {
+    margin:0;
+    padding:0;
+}
+
+.x {
+    background-color: blue;
+}
+.o {
+    background-color: orange;
+}
+.about {
+    margin:auto;
+    width: 80%;
+}
+.racket-logo-container {
+    shape-outside: circle(75px at 50% 50%);
+}
+.racket-logo {
+    height: 120px;
+    width: 120px;
+}
+p {
+}

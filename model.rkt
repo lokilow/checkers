@@ -1,21 +1,28 @@
 #lang racket/base
 
-(struct game (colors) #:mutable)
-
+(struct game (active-player position) #:mutable)
+(define squares '(s1 s2 s3 s4 s5 s6 s7 s8 s9))
+;Player 1 is X
+;Player 2 is O
 (define GAME
-  (game
-      (make-hash '((a1 . red) (a2 . black)))
-      ))
+  (game 'p1
+      (make-hash (map (lambda (s) (cons s 'e)) squares) ))
+      )
+(print (game-position GAME))
+(define (click-square! game square)
+  (make-move game square))
 
-(define (click-square! a-game a-square)  ;player current-pos next-pos)
-  (switch-color a-game a-square))
 
+(define (make-move game square)
+  (if (equal? (game-active-player game) 'p1)
+    (begin
+    (hash-set! (game-position game) square 'x)
+     (set-game-active-player! GAME 'p2))
+    (begin
+    (hash-set! (game-position game) square 'o)
+     (set-game-active-player! GAME 'p1))))
 
-(define (switch-color game square)
-  (if (equal? (hash-ref (game-colors game) square) 'red)
-    (hash-set! (game-colors game) square 'black)
-    (hash-set! (game-colors game) square 'red)))
-(define (get-color game square)
-  (hash-ref (game-colors game) square))
+(define (get-square game square)
+  (hash-ref (game-position game) square))
 (provide (all-defined-out))
 

@@ -1,4 +1,4 @@
-# Checkers
+# Tic Tac Toe
 
 All rendering done server side
 
@@ -12,7 +12,7 @@ I don't expect the performance to be nearly as good as the coming LiveView for P
 You must have racket installed.
 
 ```
-git clone https://github.com/lokilow/checkers.git
-cd checkers
+git clone https://github.com/lokilow/tic-tac-toe.git
+cd tic-tac-toe 
 racket app.rkt
 ```
