@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title>Tic Tac Toe</title>
+        <link rel="stylesheet" type="text/css" href="/style.css">
+        <meta charset="UTF-8">
+        <meta name="application-name" content="Tic Tac Toe">
+        <meta name="description" content="Tic Tac Toe by lowfo">
+        <meta name="author" content="lokilow">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body class="app">
+        <h1>Tic Tac Toe</h1>
+        <div id="players">
+            <h4>Player 1</h4>
+            <h4>Player 2</h4>
+        </div>
+        <h2> @(game-status GAME)</h2>
+
+        <div class="board" id="board"> 
+            <a href=@(embed/url ((curry click-square-handler) 8))> 
+                <div class="square e" 
+                     id="s8")> 
+                </div> 
+            </a> 
+            <a href=@(embed/url ((curry click-square-handler) 1))> 
+                <div class="square e" 
+                     id="s1")> 
+                </div> 
+            </a> 
+            <a href=@(embed/url ((curry click-square-handler) 6))> 
+                <div class="square e" 
+                     id="s6")> 
+                </div> 
+            </a> 
+            <a href=@(embed/url ((curry click-square-handler) 3))> 
+                <div class="square e" 
+                     id="s3")> 
+                </div> 
+            </a> 
+            <a href=@(embed/url ((curry click-square-handler) 5))> 
+                <div class="square e" 
+                     id="s5")> 
+                </div> 
+            </a> 
+            <a href=@(embed/url ((curry click-square-handler) 7))> 
+                <div class="square e" 
+                     id="s7")> 
+                </div> 
+            </a> 
+            <a href=@(embed/url ((curry click-square-handler) 4))> 
+                <div class="square e" 
+                     id="s4")> 
+                </div> 
+            </a> 
+            <a href=@(embed/url ((curry click-square-handler) 9))> 
+                <div class="square e" 
+                     id="s9")> 
+                </div> 
+            </a> 
+            <a href=@(embed/url ((curry click-square-handler) 2))> 
+                <div class="square e" 
+                     id="s2")> 
+                </div> 
+            </a> 
+    </body>
+</html>

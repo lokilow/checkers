@@ -7,6 +7,12 @@
          "model.rkt")
 
 (define (start-game request)
+  (lambda (embed/url)
+    (response/full
+      200 #"Okay"
+      (current-seconds) TEXT/HTML-MIME-TYPE
+      empty
+      (list (string->bytes/utf-8 (include-template "initial-load.html")))))
   (render-game request))
 
 (define (render-game request)
