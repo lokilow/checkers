@@ -31,14 +31,18 @@ a {
 }
 .about {
     margin:auto;
-    width: 80%;
-}
-.racket-logo-container {
-    shape-outside: circle(75px at 50% 50%);
+    margin-left:30%
 }
 .racket-logo {
     height: 120px;
     width: 120px;
+    float:left;
+    shape-outside: circle();
+    margin-right:2em;
+    margin-bottom:0.5em;
 }
+
 p {
+    margin-right:10%;
+
 }
