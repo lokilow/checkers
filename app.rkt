@@ -11,29 +11,14 @@
 
 (define (render-game request)
   (define (response-generator embed/url)
-    (response/xexpr
-      `(html
-         (head (title "Racket Tic Tac Toe!")
-               (link ((rel "stylesheet")
-                      (href "/style.css")
-                      (type "text/css"))))
-         (body
-           (h1 "Tic Tac Toe")
-           (h2 (a ((href "/tic-tac-toe")) "New Game"))
-           ,(show-winner GAME)
-           ,(make-board embed/url)
-           (div ((class "about"))
-                (img ((class "racket-logo")
-                      (src "/racket-logo.svg")
-                      (alt "Racket Logo")))
-                (p "This html and css for this application is rendered serverside.  I
-                   was inspired by the Chris McCord's keynote at ElixirConf 2018 and
-                   what he is doing with the Elixir/Phoenix ecosystem.  I am very
-                   excited for LiveView, but for now I will keep developing in
-                   Racket."))))))
-                   (send/suspend/dispatch response-generator))
+    (response/full
+      200 #"Okay"
+      (current-seconds) TEXT/HTML-MIME-TYPE
+      empty
+      (list (string->bytes/utf-8 (include-template "index.html")))))
+  (send/suspend/dispatch response-generator))
 
-(define (make-board embed/url)
+(define (render-board embed/url)
   (define (make-url game s)
     (if (member s (game-open-squares game))
       (embed/url ((curry click-square-handler) s))
@@ -45,19 +30,19 @@
            'x]
           [(member s (game-p2-moves game))
            'o]))
-  (make-cdata #f #f (include-template "board.html")))
+  (include-template "board.html"))
 
-(define (show-winner game)
+(define (game-status game)
   (if (> 5 (length (game-open-squares game)))
     (cond 
       [(and (equal? (game-active-player game) 'p1)
             (< 0 (length(get-winning-combination (game-p2-moves game)))))
-       `(h2 "Player 2 Wins!")]
+       "Player 2 Wins!"]
       [(and (equal? (game-active-player game) 'p2)
             (< 0 (length(get-winning-combination (game-p1-moves game)))))
-       `(h2 "Player 1 Wins!")]
-      [else `(h2 "Game On!")])
-    `(h2 "Game On!")))
+       "Player 1 Wins!"]
+      [else '(h2 "Game On!")])
+    "Game On!"))
 
 (define (click-square-handler square request)
   (define (response-generator embed/url)
@@ -70,5 +55,7 @@
                #:extra-files-paths
                (list 
                  (build-path (current-directory) "static"))
+               #:port 8080
+               #:listen-ip "0.0.0.0"
                #:launch-browser? #f)
 

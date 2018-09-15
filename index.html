@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Tic Tac Toe</title>
+        <link rel="stylesheet" type="text/css" href="/style.css">
+        <meta charset="UTF-8">
+        <meta name="application-name" content="Tic Tac Toe">
+        <meta name="description" content="Tic Tac Toe by lowfo">
+        <meta name="author" content="lokilow">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body class="app">
+        <h1>Tic Tac Toe</h1>
+        <div id="players">
+            <h4>Player 1</h4>
+            <h4>Player 2</h4>
+        </div>
+        <h2> @(game-status GAME)</h2>
+        @(render-board embed/url)
+        <div class="about">
+            <img src="/racket-logo.svg" class="racket-logo" alt="Racket Logo">
+            <p>This html and css for this application is rendered serverside.  I
+            was inspired by the Chris McCord's keynote at ElixirConf 2018 and
+            what he is doing with the Elixir/Phoenix ecosystem.  I am very
+            excited for LiveView, but for now I will keep developing in
+            Racket.
+            </p>
+        </div>
+    </body>
+
+</html>
