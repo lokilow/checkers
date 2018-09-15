@@ -19,7 +19,7 @@
                       (type "text/css"))))
          (body
            (h1 "Tic Tac Toe")
-           (h2 (a ((href "/checkers")) "New Game"))
+           (h2 (a ((href "/tic-tac-toe")) "New Game"))
            ,(show-winner GAME)
            ,(make-board embed/url)
            (div ((class "about"))
