@@ -41,7 +41,7 @@
       [(and (equal? (game-active-player game) 'p2)
             (< 0 (length(get-winning-combination (game-p1-moves game)))))
        "Player 1 Wins!"]
-      [else '(h2 "Game On!")])
+      [else "Game On!"])
     "Game On!"))
 
 (define (click-square-handler square request)
