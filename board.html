@@ -1,11 +1,8 @@
 <div class="board" id="board">
     @in[s squares]{
-    <a href=@(embed/url ((curry click-square-handler) s))>
-        <div class="square @(symbol->string (get-square GAME s))"
-             id=@(symbol->string s)>
+    <a href=@(make-url GAME s) >
+        <div id=@(format "s~a" s) class="square @(symbol->string (get-square-class GAME
+        s))">
         </div>
-    </a>
-    }
-</div>
-
-
+    </a>}
+    </div>
